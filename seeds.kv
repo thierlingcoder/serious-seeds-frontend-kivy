@@ -1,0 +1,79 @@
+#:kivy 1.0.9
+
+<SeedsView>:
+    BoxLayout:
+        padding: 1
+        orientation: 'vertical'
+        canvas:
+            Color:
+                rgb: 0, 0.5, 0
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        BoxLayout:
+            orientation: 'horizontal'
+            height: 30
+            size_hint: (1,None)
+
+            BoxLayout:
+                id: id_box_view
+                orientation: 'horizontal'
+
+            Button:
+                text: 'settings'
+                width: self.height
+                size_hint: (None,1)
+
+        BoxLayout:
+            orientation: 'vertical'
+            height: 30
+
+            BoxLayout:
+                id: id_box_column_heads
+                orientation: 'horizontal'
+                Button:
+                    text: 'Spalte1'
+                Button:
+                    text: 'Spalte2'
+                Button:
+                    text: 'Spalte3'
+
+            ScrollView:
+                id: id_table
+                Label:
+                    text: 'Hier kommt die Tabelle hin'
+        BoxLayout:
+            height: 50
+            size_hint: (1,None)
+            BoxLayout:
+                id: id_box_action
+                orientation: 'horizontal'
+
+
+<ViewButton>:
+    width: 60
+    size_hint: (None,1)
+    group: 'toggle_view_buttons'
+
+<ActionsButton>:
+    width: 100
+    size_hint: (None,1)
+
+<TableRow>:
+    size_hint: 1, None
+    size: self.width, 25
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<TableCell>:
+    font_size: 14
+    size_hint: 1, 1 # TODO: column.size_x, 1
+    hint_text: self.column.hint_text
+    multiline: False
+    write_tab: False
+    # TODO read BorderImage doc for border values
+    border: 1, 2, 1, 2
